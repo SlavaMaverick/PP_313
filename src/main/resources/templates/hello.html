@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Spring Security</title>
+</head>
+<body>
+<h1>Добро пожаловать!</h1>
+<h4>Пожалуйста, пройдите аутентификацию.</h4>
+<a href="/login">
+    <input type="button" value="ВХОД в Личный кабинет">
+</a>
+
+<br/><br/>
+<form th:method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+    <p><span sec:authentication="name"></span>, вы можете выйти из системы прямо сейчас</p>
+    <button type="submit">ВЫХОД из сервиса</button>
+</form>
+</body>
+</html>
